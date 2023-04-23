@@ -1,6 +1,8 @@
 import "@testing-library/jest-dom";
 import { render } from "@testing-library/react";
 import ArticleList from "../components/ArticleList";
+import React from  "react";
+import Article from './Article.test'
 
 const posts = [
   {
@@ -32,3 +34,14 @@ test("renders a Article component for each post passed as a prop", () => {
   const { container } = render(<ArticleList posts={posts} />);
   expect(container.querySelector("main").children).toHaveLength(3);
 });
+
+function ArticleList(blogData) {
+  const posts = blogData.posts
+  return (
+    <main>
+      {posts.map(post => <Article key = {post.id}
+      title = {post.title} date = {post.date} preview = {post.preview} />)}
+    </main>
+  )
+};
+export default ArticleList

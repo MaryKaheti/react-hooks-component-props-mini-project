@@ -1,3 +1,4 @@
+import React from "react";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import Article from "../components/Article";
@@ -62,3 +63,13 @@ test("renders a <p> with the preview text", () => {
   expect(p).toBeInTheDocument();
   expect(p.tagName).toBe("P");
 });
+function  Article({title,date,preview}) {
+  return (
+    <article>
+      <h3>{title}</h3>
+      <small>{date ||"January 1, 1970"}</small>
+      <p>{preview}</p>
+    </article>
+  )
+}
+export default Article
